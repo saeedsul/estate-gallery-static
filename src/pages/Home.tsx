@@ -118,19 +118,7 @@ const Home = () => {
             <p className="text-xl text-white/90 mb-8">
               Let our expert team guide you through every step of your property journey. 
               From initial consultation to closing, we're here to make your dreams a reality.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="elegant" size="lg" asChild>
-                <Link to="/contact">
-                  Get Started Today
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10" asChild>
-                <Link to="/about">
-                  Learn About Us
-                </Link>
-              </Button>
-            </div>
+            </p> 
           </div>
         </div>
       </section>

@@ -89,142 +89,17 @@ const Contact = () => {
             every step of the way. Contact us today to get started.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="shadow-elegant fade-in">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-primary flex items-center">
-                  <MessageSquare className="w-6 h-6 mr-3" />
-                  Send us a message
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Full Name *
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email Address *
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                        Phone Number
-                      </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="+1 (555) 123-4567"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="propertyInterest" className="block text-sm font-medium text-foreground mb-2">
-                        Property Interest
-                      </label>
-                      <select
-                        id="propertyInterest"
-                        name="propertyInterest"
-                        value={formData.propertyInterest}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                      >
-                        <option value="">Select property type</option>
-                        <option value="villa">Villa</option>
-                        <option value="penthouse">Penthouse</option>
-                        <option value="victorian">Victorian</option>
-                        <option value="beachfront">Beachfront</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                      Subject *
-                    </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      required
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      placeholder="What can we help you with?"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={6}
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Tell us more about your property needs, budget, preferred locations, or any specific requirements..."
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    variant="elegant" 
-                    size="lg" 
-                    disabled={isSubmitting}
-                    className="w-full md:w-auto"
-                  >
-                    {isSubmitting ? (
-                      <>Sending...</>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-
+    
           {/* Contact Information */}
-          <div className="space-y-6">
+        <div className="flex flex-wrap gap-6">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
-                <Card key={index} className="shadow-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <Card
+                  key={index}
+                  className="shadow-card fade-in"
+                  style={{ animationDelay: `${index * 0.1}s`, flex: '1 1 300px' }}
+                >
                   <CardContent className="p-6">
                     <div className="flex items-start">
                       <div className="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -233,7 +108,9 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold text-primary mb-2">{info.title}</h3>
                         {info.details.map((detail, i) => (
-                          <p key={i} className="text-foreground font-medium">{detail}</p>
+                          <p key={i} className="text-foreground font-medium">
+                            {detail}
+                          </p>
                         ))}
                         <p className="text-sm text-muted-foreground mt-1">
                           {info.description}
@@ -244,46 +121,7 @@ const Contact = () => {
                 </Card>
               );
             })}
-
-            {/* Quick Actions */}
-            <Card className="shadow-card fade-in">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-primary mb-4">Quick Actions</h3>
-                <div className="space-y-3">
-                  <Button variant="outline" className="w-full justify-start">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Schedule Viewing
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Request Callback
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <Mail className="w-4 h-4 mr-2" />
-                    Property Valuation
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Map Section */}
-        <div className="mt-16 fade-in">
-          <Card className="overflow-hidden shadow-elegant">
-            <CardContent className="p-0">
-              <div className="bg-muted h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                  <p className="text-muted-foreground">Interactive map would be embedded here</p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    123 Luxury Lane, Beverly Hills, CA 90210
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+          </div> 
       </div>
     </div>
   );
