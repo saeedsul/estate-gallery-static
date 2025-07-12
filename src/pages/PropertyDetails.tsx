@@ -147,21 +147,6 @@ const PropertyDetails = () => {
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold text-primary mb-6">Contact Agent</h3>
                 
-                <div className="space-y-4 mb-6">
-                  <Button variant="elegant" className="w-full" size="lg">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Now
-                  </Button>
-                  <Button variant="outline" className="w-full" size="lg">
-                    <Mail className="w-4 h-4 mr-2" />
-                    Send Email
-                  </Button>
-                  <Button variant="outline" className="w-full" size="lg">
-                    <MessageSquare className="w-4 h-4 mr-2" />
-                    Send Message
-                  </Button>
-                </div>
-
                 <div className="border-t pt-6">
                   <h4 className="font-semibold text-primary mb-3">Property Summary</h4>
                   <div className="space-y-2 text-sm">
